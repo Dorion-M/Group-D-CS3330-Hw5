@@ -1,0 +1,15 @@
+package edu.mu.pizza;
+
+public enum Toppings {
+	
+	TOMATO,
+	CHEESE,
+	PINEAPPLE,
+	BLACK_OLIVE,
+	ITALIAN_SAUSAGE,
+	PEPPERONI,
+	BELL_PEPPER,
+	MUSHROOM,
+	CANADIAN_BACON
+
+}
