@@ -35,6 +35,17 @@ public abstract class AbstractPizza {
 		this.cookingStrategy = cookingStrategy;
 		this.cookingPrice = cookingPrice;
 	}
+	
+	
+	public AbstractPizza(AbstractPizza copy) {
+		this.toppingList = copy.toppingList;
+		this.priceWithoutToppings = copy.priceWithoutToppings;
+		this.totalPrice = copy.totalPrice;
+		this.pizzaOrderID = copy.pizzaOrderID;
+		this.cookingStrategy = copy.cookingStrategy;
+		this.cookingPrice = copy.cookingPrice;
+		
+	}
 
 
 
