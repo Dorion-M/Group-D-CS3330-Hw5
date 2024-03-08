@@ -18,6 +18,7 @@ public class PizzaCookingFactory {
                 break;
             case HAWAIIAN:
             	pizza = new HawaiianPizza();
+            	break;
             case SUPREME:
             	pizza = new SupremePizza();
         }
