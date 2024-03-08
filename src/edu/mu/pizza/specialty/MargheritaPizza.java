@@ -1,19 +1,29 @@
 package edu.mu.pizza.specialty;
 import java.util.List;
 
-import edu.mu.pizza.*;
-import edu.mu.pizza.cooking.ICookingStrategy;
+import edu.mu.pizza.AbstractPizza;
+import edu.mu.pizza.Toppings;
 
-public class MargheritaPizza extends AbstractPizza{
+public class MargheritaPizza extends AbstractPizza {
+    public MargheritaPizza() {
+        super();
+        addDefaultToppings(List.of(Toppings.TOMATO, Toppings.CHEESE));
+        priceWithoutToppings = 2.50;
+        totalPrice = updatePizzaPrice();
+    }
 
-	public MargheritaPizza(List<Toppings> toppingList, double priceWithoutToppings, double totalPrice, int pizzaOrderID,
-			ICookingStrategy cookingStrategy, double cookingPrice) {
-		super(toppingList, priceWithoutToppings, totalPrice, pizzaOrderID, cookingStrategy, cookingPrice);
-		// TODO Auto-generated constructor stub
-	}
-	
-	public MargheritaPizza(MargheritaPizza copy) {
-		super(copy);
-	}
-	
+    @Override
+    protected double addToppingsToPrice(double priceWithoutToppings) {
+        double totalToppingPrice = 0.0;
+        for (Toppings topping : toppingList) {
+            totalToppingPrice += topping.getPrice();
+        }
+        totalPrice = priceWithoutToppings + totalToppingPrice;
+        return totalPrice;
+    }
+
+    @Override
+    public double updatePizzaPrice() {
+        return addToppingsToPrice(priceWithoutToppings);
+    }
 }
