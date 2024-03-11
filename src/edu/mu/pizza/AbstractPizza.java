@@ -125,13 +125,12 @@ public abstract class AbstractPizza {
 		return cookingPrice;
 	}
 
-
-
+	
+	
 	public void setCookingPrice(double cookingPrice) {
 		this.cookingPrice = cookingPrice;
 	}
 
-	
     public abstract double updatePizzaPrice();
     
     public void addDefaultToppings(List<Toppings> toppings) {
@@ -142,9 +141,6 @@ public abstract class AbstractPizza {
     }
     
     protected abstract double addToppingsToPrice(double priceWithoutToppings);
-
-
-
 
 	@Override
 	public String toString() {
