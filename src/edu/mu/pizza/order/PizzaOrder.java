@@ -6,6 +6,9 @@ import edu.mu.pizza.cooking.CookingStyleType;
 import edu.mu.pizza.cooking.ICookingStrategy;
 import edu.mu.pizza.cooking.MicrowaveCookingStrategy;
 import edu.mu.pizza.cooking.PizzaCookingFactory;
+import edu.mu.pizza.specialty.HawaiianPizza;
+import edu.mu.pizza.specialty.MargheritaPizza;
+import edu.mu.pizza.specialty.VegetarianPizza;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,11 +43,10 @@ public class PizzaOrder
 				}
 				return;
 			}
-			else 
-			{
-				System.out.println(order + "'s order wasn't found.");
-				return;
-			}
+
+			System.out.println(order + "'s order wasn't found.");
+			return;
+
 		}
 	}
 	
@@ -54,19 +56,24 @@ public class PizzaOrder
 		{
 			if(order.getPizzaOrderID() == orderID) 
 			{
-				System.out.println(orderID + "'s pizza: ");
-				System.out.println("Pizza: " + order.getClass());
+				System.out.println(orderID + "'s order: ");
+				if (order instanceof MargheritaPizza) {
+	                System.out.println("Pizza: Margherita Pizza");
+	            } else if (order instanceof VegetarianPizza) {
+	                System.out.println("Pizza: Pepperoni Pizza");
+	            } else if (order instanceof HawaiianPizza) {
+	                System.out.println("Pizza: Hawaiian Pizza");
+	            } else {
+	                System.out.println("Pizza: SupremePizza");
+	            }
 				for(Toppings topping : order.getToppingList()) 
 				{
 					System.out.println(topping);
 				}
 				return;
 			}
-			else 
-			{
-				System.out.println(order + "'s order wasn't found.");
-				return;
-			}
+			System.out.println(order + "'s order wasn't found.");
+			return;
 		}
 	}
 	
