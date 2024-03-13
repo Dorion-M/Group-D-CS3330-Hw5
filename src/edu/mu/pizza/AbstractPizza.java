@@ -148,8 +148,8 @@ public abstract class AbstractPizza {
                "Topping List: " + toppingList + "\n" +
                "Cooking Strategy: " + cookingStrategy + "\n" +
                "Price without Toppings: $" + priceWithoutToppings + "\n" +
-               "Cooking Price: $" + cookingPrice +
-               "Total Price: $" + totalPrice + "\n";   
+               "Cooking Price: $" + cookingPrice +  "\n" +
+               "Total Price: $" + (totalPrice) + "\n";   
 	}
 	
 	 

@@ -42,7 +42,7 @@ public class HawaiianPizza extends AbstractPizza {
 		               "Topping List: " + toppingList + "\n" +
 		               "Cooking Strategy: " + cookingStrategy + "\n" +
 		               "Price without Toppings: $" + priceWithoutToppings + "\n" +
-		               "Cooking Price: $" + cookingPrice + 
+		               "Cooking Price: $" + cookingPrice +  "\n" +
 		               "Total Price: $" + (totalPrice+cookingPrice) + "\n"; 
 	        
 		}
