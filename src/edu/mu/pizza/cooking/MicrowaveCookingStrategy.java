@@ -14,4 +14,11 @@ public class MicrowaveCookingStrategy implements ICookingStrategy{
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "Microwave Cooking Strategy";
+	}
+	
+	
+
 }

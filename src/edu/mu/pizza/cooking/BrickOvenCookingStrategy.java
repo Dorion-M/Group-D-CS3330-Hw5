@@ -14,4 +14,10 @@ public class BrickOvenCookingStrategy implements ICookingStrategy {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "Brick Oven Strategy";
+	}
+
+	
 }

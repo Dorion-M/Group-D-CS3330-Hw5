@@ -54,24 +54,16 @@ public class PizzaOrder
 	
 	
 	// Prints the pizza in the cart which corresponds to the orderID.
-	public void printPizzaOrderCart(int orderID) 
-	{
-		 AbstractPizza pizzaToPrint = null;
-		 
-		    for (AbstractPizza order : pizzaOrderList) {
-		        if (order.getPizzaOrderID() == orderID) {
-		            pizzaToPrint = order;
-		            break;
-		        }
-		    }
-
-		    if (pizzaToPrint != null) {
-		        System.out.println("Details for Pizza Order ID: " + orderID);
-		        System.out.println(pizzaToPrint); // Assuming your toString() method in AbstractPizza class is well implemented.
-		    } else {
-		        System.out.println("No pizza found with Order ID: " + orderID);
-		    }
-		
+	public void printPizzaOrderCart() {
+	    if (pizzaOrderList.isEmpty()) {
+	        System.out.println("Cart is empty.");
+	    } else {
+	        System.out.println("Details of all pizzas in the cart:");
+	        for (AbstractPizza pizza : pizzaOrderList) {
+	            System.out.println(pizza); // This will use the overridden toString() method of AbstractPizza
+	            System.out.println(); // Add a blank line for readability
+	        }
+	    }
 	}
 	
 	//Retrieves the pizza which corresponds to the orderID.
@@ -174,21 +166,17 @@ public class PizzaOrder
 	}
 	
 	//Checks out the order and returns the total and throws an exception if one occurs.
-	public double checkout() throws Exception
-	{
-		if(isThereAnyUncoockedPizza()) 
-		{
-			throw new Exception("There is an uncooked pizza.");
-		}		
-		
-		double total = 0.0;
-		for(AbstractPizza order: pizzaOrderList) 
-		{
-			total += order.getTotalPrice();
-		}
-		
-		return total;
-		
+	public double checkout() throws Exception {
+	    if (isThereAnyUncoockedPizza()) {
+	        throw new Exception("There is an uncooked pizza.");
+	    }        
+
+	    double total = 0.0;
+	    for (AbstractPizza order : pizzaOrderList) {
+	        total += order.getTotalPrice() + order.getCookingPrice();
+	    }
+
+	    return total;
 	}
 	
 	//Chooses the given cooking strategy for the given pizza.

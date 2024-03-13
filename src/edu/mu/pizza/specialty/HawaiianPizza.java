@@ -35,17 +35,17 @@ public class HawaiianPizza extends AbstractPizza {
         return addToppingsToPrice(priceWithoutToppings);
     }
 
-	@Override
-	public String toString() {
-		return "HawaiianPizza [toppingList=" + toppingList + ", priceWithoutToppings=" + priceWithoutToppings
-				+ ", totalPrice=" + totalPrice + ", pizzaOrderID=" + pizzaOrderID + ", cookingStrategy="
-				+ cookingStrategy + ", cookingPrice=" + cookingPrice + ", updatePizzaPrice()=" + updatePizzaPrice()
-				+ ", getToppingList()=" + getToppingList() + ", getPriceWithoutToppings()=" + getPriceWithoutToppings()
-				+ ", getTotalPrice()=" + getTotalPrice() + ", getPizzaOrderID()=" + getPizzaOrderID()
-				+ ", getCookingStrategy()=" + getCookingStrategy() + ", getCookingPrice()=" + getCookingPrice()
-				+ ", toString()=" + super.toString() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
-				+ "]";
-	}
+	
+		@Override
+		public String toString() {
+			 return "Pizza Order ID: " + pizzaOrderID + "\n" +
+		               "Topping List: " + toppingList + "\n" +
+		               "Cooking Strategy: " + cookingStrategy + "\n" +
+		               "Price without Toppings: $" + priceWithoutToppings + "\n" +
+		               "Cooking Price: $" + cookingPrice + 
+		               "Total Price: $" + (totalPrice+cookingPrice) + "\n"; 
+	        
+		}
 
 	
 }

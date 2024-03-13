@@ -30,10 +30,9 @@ public class Main {
             //Adds cooking strategies to the pizzas.
             System.out.println("\nAdding Cooking Strategies to Pizzas in Cart:");
             boolean cook = order.selectCookingStrategyByPizzaOrderID(1, CookingStyleType.MICROWAVE);
-            System.out.println("Cooking strategy was set: "+ cook);
             order.selectCookingStrategyByPizzaOrderID(2, CookingStyleType.MICROWAVE);
-            order.selectCookingStrategyByPizzaOrderID(3, CookingStyleType.MICROWAVE);
-            order.selectCookingStrategyByPizzaOrderID(4, CookingStyleType.MICROWAVE);
+            order.selectCookingStrategyByPizzaOrderID(3, CookingStyleType.BRICK_OVEN);
+            order.selectCookingStrategyByPizzaOrderID(4, CookingStyleType.CONVENTIONAL_OVEN);
             order.selectCookingStrategyByPizzaOrderID(5, CookingStyleType.MICROWAVE);
             
            //Adds selected toppings to the pizzas.
@@ -47,9 +46,7 @@ public class Main {
             //Removes selected toppings from the pizzas
             System.out.println("\nRemoving Toppings from Pizzas");
             order.removeToppingFromPizza(1, Toppings.CHEESE);
-            order.removeToppingFromPizza(2, Toppings.CHEESE);
             order.removeToppingFromPizza(3, Toppings.CHEESE);
-            order.removeToppingFromPizza(4, Toppings.CHEESE);
             order.removeToppingFromPizza(5, Toppings.CHEESE);
             
             //Tests the isThereAnyUncoockedPizza method.
@@ -61,18 +58,18 @@ public class Main {
             System.out.println("\nTesting the method printListOfToppingsByPizzaOrderID");
             order.printListOfToppingsByPizzaOrderID(2);
             
-          //Tests the printPizzaOrderCart method.
-            System.out.println("\nTesting the method printPizzaOrderCart");
-            order.printPizzaOrderCart(4);
-            
-            //Tests the getPizzaByOrderID method.
+          //Tests the getPizzaByOrderID method.
             System.out.println("\nTesting the method  getPizzaByOrderID");
             System.out.println(order.getPizzaByOrderID(2));
+            
+          //Tests the printPizzaOrderCart method.
+            System.out.println("\nTesting the method printPizzaOrderCart");
+            order.printPizzaOrderCart();
             
             
            // Checks out the cart and displays the price and an error if one has occured.
             System.out.println("\nChecking out the cart");
-            System.out.println("\nAttempting to checkout:");
+       
             double total = order.checkout();
             System.out.printf("Total cost of the order: $%.2f\n", total);
 	} catch(Exception e) {

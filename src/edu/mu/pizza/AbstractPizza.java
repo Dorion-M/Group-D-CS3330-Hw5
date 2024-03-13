@@ -146,11 +146,10 @@ public abstract class AbstractPizza {
 	public String toString() {
         return "Pizza Order ID: " + pizzaOrderID + "\n" +
                "Topping List: " + toppingList + "\n" +
-               "Price without Toppings: $" + priceWithoutToppings + "\n" +
-               "Total Price: $" + totalPrice + "\n" +
                "Cooking Strategy: " + cookingStrategy + "\n" +
-               "Cooking Price: $" + cookingPrice;
-        
+               "Price without Toppings: $" + priceWithoutToppings + "\n" +
+               "Cooking Price: $" + cookingPrice +
+               "Total Price: $" + totalPrice + "\n";   
 	}
 	
 	 
