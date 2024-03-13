@@ -59,7 +59,7 @@ public class Main {
             
           //Tests the printListOfToppingsByPizzaOrderID method.
             System.out.println("\nTesting the method printListOfToppingsByPizzaOrderID");
-            order.printListOfToppingsByPizzaOrderID(1);
+            order.printListOfToppingsByPizzaOrderID(2);
             
           //Tests the printPizzaOrderCart method.
             System.out.println("\nTesting the method printPizzaOrderCart");
@@ -67,14 +67,15 @@ public class Main {
             
             //Tests the getPizzaByOrderID method.
             System.out.println("\nTesting the method  getPizzaByOrderID");
-            order.getPizzaByOrderID(3);
+            System.out.println(order.getPizzaByOrderID(2));
+            
             
            // Checks out the cart and displays the price and an error if one has occured.
             System.out.println("\nChecking out the cart");
             System.out.println("\nAttempting to checkout:");
             double total = order.checkout();
             System.out.printf("Total cost of the order: $%.2f\n", total);
-      } catch(Exception e) {
+	} catch(Exception e) {
     	  System.out.println("An error occurred: " + e.getMessage());
           e.printStackTrace();
       }
@@ -82,4 +83,6 @@ public class Main {
       
 	}
 }
+
+
        

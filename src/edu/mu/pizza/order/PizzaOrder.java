@@ -30,39 +30,41 @@ public class PizzaOrder
 		this.pizzaOrderList = new ArrayList<>();
 	}
 	
+	
+	
 	public void printListOfToppingsByPizzaOrderID(int orderID) 
 	{
-		for(AbstractPizza order : pizzaOrderList) 
-		{
-			if(order.getPizzaOrderID() == orderID) 
-			{
-				System.out.println(orderID + "'s toppings: ");
-				for(Toppings topping : order.getToppingList()) 
-				{
-					System.out.println(topping);
-				}
-				return;
-			}
 
-			System.out.println(order + "'s order wasn't found.");
-			return;
-
-		}
+	    for (AbstractPizza pizza : pizzaOrderList) 
+	    {
+	        if (pizza.getPizzaOrderID() == orderID) 
+	        {
+	            
+	            System.out.println("Toppings for Pizza Order ID " + orderID + ":");
+	            for (Toppings topping : pizza.getToppingList()) 
+	            {
+	                System.out.println(topping);
+	            }
+	            return; 
+	        }
+	    }
+	    System.out.println("No pizza found with Order ID: " + orderID);
 	}
+	
+	
+	
 	
 	public void printPizzaOrderCart(int orderID) 
 	{
 		 AbstractPizza pizzaToPrint = null;
-
-		    // Find the pizza with the given order ID
-		    for (AbstractPizza pizza : pizzaOrderList) {
-		        if (pizza.getPizzaOrderID() == orderID) {
-		            pizzaToPrint = pizza;
+		 
+		    for (AbstractPizza order : pizzaOrderList) {
+		        if (order.getPizzaOrderID() == orderID) {
+		            pizzaToPrint = order;
 		            break;
 		        }
 		    }
 
-		    // Check if the pizza was found
 		    if (pizzaToPrint != null) {
 		        System.out.println("Details for Pizza Order ID: " + orderID);
 		        System.out.println(pizzaToPrint); // Assuming your toString() method in AbstractPizza class is well implemented.
@@ -70,50 +72,25 @@ public class PizzaOrder
 		        System.out.println("No pizza found with Order ID: " + orderID);
 		    }
 		
-		
-		/*
-		for(AbstractPizza order : pizzaOrderList) 
-		{
-			
-			if(order.getPizzaOrderID() == orderID) 
-			{
-				System.out.println(orderID + "'s order: ");
-				if (order instanceof MargheritaPizza) {
-	                System.out.println("Pizza: Margherita Pizza");
-	            } else if (order instanceof VegetarianPizza) {
-	                System.out.println("Pizza: Pepperoni Pizza");
-	            } else if (order instanceof HawaiianPizza) {
-	                System.out.println("Pizza: Hawaiian Pizza");
-	            } else {
-	                System.out.println("Pizza: SupremePizza");
-	            }
-				for(Toppings topping : order.getToppingList()) 
-				{
-					System.out.println(topping);
-				}
-				return;
-			}
-			System.out.println(order + "'s order wasn't found.");
-			return;
-		}
-		*/
 	}
 	
 	public AbstractPizza getPizzaByOrderID(int orderID) 
 	{
-		for(AbstractPizza order: pizzaOrderList) 
-		{
-			if(order.getPizzaOrderID() == orderID) 
-			{
-				return order;
-			}
-			else 
-			{
-				System.out.println(order + "'s order wasn't found.");				
-			}
-		}
-		return null;
+	    for (AbstractPizza order : pizzaOrderList) 
+	    {
+	        if (order.getPizzaOrderID() == orderID) 
+	        {
+	            return order;
+	        }
+	        else
+	        {
+	        	
+	        }
+	    }
+	    System.out.println(orderID + "'s order wasn't found.");
+	    return null;
 	}
+	
 	
 	public boolean addPizzaToCart(PizzaType pizzaType) 
 	{
@@ -127,69 +104,60 @@ public class PizzaOrder
 		return true;
 	}
 	
+	
 	public boolean addNewToppingToPizza(int orderID, Toppings topping) 
 	{
-		for(AbstractPizza order : pizzaOrderList) 
-		{
-			if(order.getPizzaOrderID() == orderID) 
-			{
-				List<Toppings> newtoppings = order.getToppingList();
-				
-				for(Toppings currTopping : newtoppings) 
-				{
-					if(currTopping == topping) 
-					{
-						System.out.println("Topping already on pizza, did not add.");
-						return false;
-					}
-				}
-				
-				System.out.println("Added new topping: " + topping);
-				newtoppings.add(topping);
-				order.setToppingList(newtoppings);
-				return true;
-				
-			}
-			else 
-			{
-				System.out.println(order + "'s order wasn't found.");
-				return false;
-			}
-		}
-		//null statement
-		return false;
+	    for (AbstractPizza order : pizzaOrderList) 
+	    {
+	        if (order.getPizzaOrderID() == orderID) 
+	        {
+	            
+	            if (order.getToppingList().contains(topping)) 
+	            {
+	                System.out.println("Topping: " + topping + " already exists on pizza with Order ID: " + orderID);
+	                return false; 
+	            } 
+	            else 
+	            {
+	                
+	                order.getToppingList().add(topping);
+	                
+	                order.updatePizzaPrice();
+	                System.out.println("Added new topping " + topping + " to pizza with Order ID: " + orderID);
+	                return true; 
+	            }
+	        }
+	    }
+	    System.out.println("The pizza with the OrderID " + orderID + " was not found.");
+	    return false; 
 	}
+	
+	
 	
 	public boolean removeToppingFromPizza(int orderID, Toppings topping) 
 	{
-		for(AbstractPizza order : pizzaOrderList) 
-		{
-			if(order.getPizzaOrderID() == orderID) 
-			{
-				List<Toppings> newtoppings = order.getToppingList();
-
-				for(Toppings currTopping : newtoppings) 
-				{
-					if(currTopping == topping) 
-					{
-						System.out.println("Topping removed: " + topping);
-						newtoppings.remove(topping);
-						order.setToppingList(newtoppings);
-						return true;	
-					}
-				}
-				System.out.println(topping + " is not on the pizza currently");
-				return false;
-			}
-			else 
-			{
-				System.out.println(order + "'s order wasn't found.");
-				return false;
-			}
-		}
-		//null statement
-		return false;	
+	    for (AbstractPizza order : pizzaOrderList) 
+	    {
+	        if (order.getPizzaOrderID() == orderID) 
+	        {
+	            if (order.getToppingList().contains(topping)) 
+	            {
+	                order.getToppingList().remove(topping);
+	                order.updatePizzaPrice();
+	                System.out.println("Removed topping: " + topping + " from pizza with Order ID: " + orderID);
+	                return true;
+	            } 
+	            else 
+	            {
+	                System.out.println("The topping: " + topping + " was not found on pizza with Order ID: " + orderID);
+	                return false; 
+	            }
+	        }
+	    }
+	    System.out.println("The pizza with Order ID " + orderID + " was not found.");
+	    return false; 
 	}
+	
 	
 	public boolean isThereAnyUncoockedPizza() 
 	{
