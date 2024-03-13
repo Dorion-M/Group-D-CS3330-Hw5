@@ -7,6 +7,7 @@ import edu.mu.pizza.specialty.*;
 
 public class PizzaCookingFactory {
 	
+	//Creates a new pizza and chooses its type.
 	public AbstractPizza createPizza(PizzaType pizzaType) {
         AbstractPizza pizza = null;
         switch (pizzaType) {

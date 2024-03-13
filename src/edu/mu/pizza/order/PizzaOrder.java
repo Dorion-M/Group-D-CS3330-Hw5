@@ -31,7 +31,7 @@ public class PizzaOrder
 	}
 	
 	
-	
+	// Prints the pizza toppings included on the pizza which corresponds to the orderID.
 	public void printListOfToppingsByPizzaOrderID(int orderID) 
 	{
 
@@ -53,7 +53,7 @@ public class PizzaOrder
 	
 	
 	
-	
+	// Prints the pizza in the cart which corresponds to the orderID.
 	public void printPizzaOrderCart(int orderID) 
 	{
 		 AbstractPizza pizzaToPrint = null;
@@ -74,6 +74,7 @@ public class PizzaOrder
 		
 	}
 	
+	//Retrieves the pizza which corresponds to the orderID.
 	public AbstractPizza getPizzaByOrderID(int orderID) 
 	{
 	    for (AbstractPizza order : pizzaOrderList) 
@@ -91,7 +92,7 @@ public class PizzaOrder
 	    return null;
 	}
 	
-	
+	//Adds the passed pizza to the cart list.
 	public boolean addPizzaToCart(PizzaType pizzaType) 
 	{
 		AbstractPizza newPizza = pizzaFactory.createPizza(pizzaType);
@@ -104,7 +105,8 @@ public class PizzaOrder
 		return true;
 	}
 	
-	
+	//Takes the pizza corresponding to the orderID and adds the included topping to the toppings list 
+	//of the pizza.
 	public boolean addNewToppingToPizza(int orderID, Toppings topping) 
 	{
 	    for (AbstractPizza order : pizzaOrderList) 
@@ -133,7 +135,7 @@ public class PizzaOrder
 	}
 	
 	
-	
+	//Removes the given topping from the pizza corresponding to the orderID.
 	public boolean removeToppingFromPizza(int orderID, Toppings topping) 
 	{
 	    for (AbstractPizza order : pizzaOrderList) 
@@ -158,7 +160,7 @@ public class PizzaOrder
 	    return false; 
 	}
 	
-	
+	//Checks if there are any uncooked pizzas in the cart.
 	public boolean isThereAnyUncoockedPizza() 
 	{
 		for(AbstractPizza pizza : pizzaOrderList) 
@@ -171,6 +173,7 @@ public class PizzaOrder
 		return false;
 	}
 	
+	//Checks out the order and returns the total and throws an exception if one occurs.
 	public double checkout() throws Exception
 	{
 		if(isThereAnyUncoockedPizza()) 
@@ -188,6 +191,7 @@ public class PizzaOrder
 		
 	}
 	
+	//Chooses the given cooking strategy for the given pizza.
 	public boolean selectCookingStrategyByPizzaOrderID(int orderID, CookingStyleType cookingStrategyType) 
 	{
 		for(AbstractPizza pizza : pizzaOrderList) 

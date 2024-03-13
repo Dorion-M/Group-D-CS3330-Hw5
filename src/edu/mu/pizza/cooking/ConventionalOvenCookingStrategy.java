@@ -4,6 +4,7 @@ import edu.mu.pizza.AbstractPizza;
 
 public class ConventionalOvenCookingStrategy implements ICookingStrategy{
 
+	//Cooks the pizza and updates the price of the pizza.
 	@Override
 	public boolean cook(AbstractPizza pizza) {
 		// TODO Auto-generated method stub
