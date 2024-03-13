@@ -52,8 +52,29 @@ public class PizzaOrder
 	
 	public void printPizzaOrderCart(int orderID) 
 	{
+		 AbstractPizza pizzaToPrint = null;
+
+		    // Find the pizza with the given order ID
+		    for (AbstractPizza pizza : pizzaOrderList) {
+		        if (pizza.getPizzaOrderID() == orderID) {
+		            pizzaToPrint = pizza;
+		            break;
+		        }
+		    }
+
+		    // Check if the pizza was found
+		    if (pizzaToPrint != null) {
+		        System.out.println("Details for Pizza Order ID: " + orderID);
+		        System.out.println(pizzaToPrint); // Assuming your toString() method in AbstractPizza class is well implemented.
+		    } else {
+		        System.out.println("No pizza found with Order ID: " + orderID);
+		    }
+		
+		
+		/*
 		for(AbstractPizza order : pizzaOrderList) 
 		{
+			
 			if(order.getPizzaOrderID() == orderID) 
 			{
 				System.out.println(orderID + "'s order: ");
@@ -75,6 +96,7 @@ public class PizzaOrder
 			System.out.println(order + "'s order wasn't found.");
 			return;
 		}
+		*/
 	}
 	
 	public AbstractPizza getPizzaByOrderID(int orderID) 
@@ -98,6 +120,10 @@ public class PizzaOrder
 		AbstractPizza newPizza = pizzaFactory.createPizza(pizzaType);
 		if(pizzaType == null) return false;
 		pizzaOrderList.add(newPizza);
+		System.out.println(pizzaType + " pizza added to cart with Order ID: " + newPizza.getPizzaOrderID());
+		int size;
+		size = pizzaOrderList.size();
+		System.out.println("The size of the cart is now: " + size);
 		return true;
 	}
 	
@@ -171,17 +197,17 @@ public class PizzaOrder
 		{
 			if(pizza.getCookingStrategy() == null) 
 			{
-				return false;
+				return true;
 			}
 		}
-		return true;
+		return false;
 	}
 	
 	public double checkout() throws Exception
 	{
 		if(isThereAnyUncoockedPizza()) 
 		{
-			throw new Exception("There is a cooked pizza.");
+			throw new Exception("There is an uncooked pizza.");
 		}		
 		
 		double total = 0.0;
@@ -218,8 +244,14 @@ public class PizzaOrder
 						return false;
 							
 				}
-				
-				return cookingStrategy.cook(pizza);
+				if(cookingStrategy != null)
+				{
+					pizza.setCookingStrategy(cookingStrategy);
+					cookingStrategy.cook(pizza);
+					System.out.println("Cooking strategy " + cookingStrategyType + " applied to Pizza Order ID: " + orderID);
+	                return true;
+				}
+				return true;
 				
 			}
 			
